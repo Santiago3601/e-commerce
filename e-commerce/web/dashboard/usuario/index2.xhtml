@@ -64,8 +64,13 @@
 
 
                         <div class="card-body">
-                            <h5 class="card-title">#{p[1]}</h5>
-                            <p>#{p[6]}</p>
+                            <h3 class="card-title">#{p[1]}</h3>
+                            <p>#{p[2]}</p>
+                            <p>#{p[3]} grm.</p>
+                            <p id="us">#{p[4]}</p>
+                            <p id="co"></p>
+                            
+                            
                             <!--         <h5 class="card-title"># {p.nombre}</h5>
                                     <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="## {p.nombre}"></a>
                             -->    
@@ -83,6 +88,26 @@
 
 
         </div>
+        <script>
+
+            var access_key = 'c10f07c3901d3f6e095d5e9cebf34395';
+            var from = 'USD';
+            var to = 'EUR';
+            var amount = 1;
+
+            $.ajax({
+
+                url: 'https://apilayer.net/api/convert?access_key=' + access_key + '&from=' + from + '&to=' + to + '&amount=' + amount,
+                dataType: "jsonp",
+                success: function (response) {
+                    if (response.success) {
+
+                        alert('1 USD is worth ' + parseFloat(response.rate).toFixed(2) + ' EUR');
+                    }
+                }
+            });
+        </script>  
+        <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
