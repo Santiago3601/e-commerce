@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Inicio</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="resources/css/freelancer.min.css"></link>
+        <link rel="stylesheet" href="resources/css/estilos.css"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">E-COMMERCE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#Ingresar">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#Registrarse">Registro</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+
+        <div class="modal fade" id="Ingresar" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Login-inLabel">Ingresar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <h:form class="needs-validation" >
+
+
+                            <f:view>
+
+                                <div class="form-group">
+                                    <label for="validationDefault01">Usuario o Correo</label>
+                                    <h:inputText class="form-control" ps:placeholder="E-mail" ps:required="true" ps:type="email" id="txtCorreo" value="#{usuarioControlador.usuario.correo}">
+                                    </h:inputText>
+
+                                </div>
+
+                                <label for="exampleInputPassword1">Password</label>
+
+                                <h:inputSecret  class="form-control" id="validationCustom04"  ps:placeholder="Password"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
+
+                                </h:inputSecret>
+
+                            </f:view>
+                            <div class="modal-footer">
+                                <a href="recuperar_contraseña.xhtml" target="_blanck" >Recuperar Contraseña</a>
+                                <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
+                            </div>
+
+                        </h:form>
+
+                    </div>
+
+                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Registrarse" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Login-inLabel">Registro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h:form class="needs-validation" >
+                            <f:view>
+                                <label for="validationDefault01">Nombre completo</label>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <h:inputText ps:placeholder="Nombre" class="form-control" value="#{usuarioControlador.usuario.nombre}" title="Nombre" ps:required="true" requiredMessage="The Nombre field is required."/>
+
+                                        </div>
+                                        <div class="col">
+                                            <h:inputText ps:minlength="5" ps:placeholder="Apellido" class="form-control" id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" ps:required="true"  requiredMessage="The Apellido field is required."/> 
+
+                                        </div>  
+                                    </div>
+                                </div>
+                                <label for="exampleInputPassword1">Identificación</label>
+                                <h:inputText  class="form-control" id="validationCustom03"  ps:placeholder="Ingresa un documento de identidad"  ps:required="true" value="#{usuarioControlador.usuario.id}">
+                                </h:inputText>
+                            </f:view>
+                            <label for="exampleInputPassword1">Correo</label>
+                            <h:inputText  class="form-control" id="validationCustom01"  ps:placeholder="Correo"  ps:required="true" value="#{usuarioControlador.usuario.correo}">
+                            </h:inputText>
+
+                            <label for="exampleInputPassword1">Contraseña</label>
+                            <h:inputSecret  class="form-control" id="validationCustom02"  ps:placeholder="Contraseña"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
+                            </h:inputSecret>
+
+                            <div class="modal-footer">
+                                <h:commandButton  action="#{usuarioControlador.SingUp()}" value="Login"></h:commandButton>
+                            </div>
+
+                        </h:form>
+
+                    </div>
+
+                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="container">
+            <h1>Bienvenido</h1>
+            <p>Ya puedes ingresar al sistema con las credenciales que ingresaste en el formulario de registro anterior</p>
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </h:body>
+</html>
+

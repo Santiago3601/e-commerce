@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+body {
+  font-family: 'Questrial';
+ 
+}
+a{
+    color: black;
+}
+div#navbarSupportedContent.collapse.navbar-collapse{
+    justify-content: flex-end;
+}
+
+.container {
+    max-width: 1196px;
+}

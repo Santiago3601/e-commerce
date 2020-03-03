@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Inicio</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="resources/css/freelancer.min.css"></link>
+        <link rel="stylesheet" href="../../resources/css/estilos.css"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">E-COMMERCE</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" >#{usuarioControlador.usuario.nombre}</a>
+                    </li>
+                </ul>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" >Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content -->
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Categorias</li>
+                </ol>
+            </nav>
+            <div class="nav">
+
+                <c:forEach items="#{categoriaControlador.consultarTodos()}" var="p">
+                    <c:if test="#{empty p.categoriaPadre}">
+                        <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
+                            <img src="#{p.foto}" class="card-img-top" alt="..."></img>
+                            <div class="card-body">
+                                <h5 class="card-title">#{p.nombreCategoria}</h5>
+                                <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="##{p.nombreCategoria}">Ver mas</a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="#{p.nombreCategoria}" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Login-inLabel">#{p.nombreCategoria}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body" style="width: 446px;">
+                                            <c:forEach items="#{p.categoriaList}" var="sp">
+                                                <div class="nav">
+                                                    <div class="card" style="width: 402px;     margin-bottom: 13px;">
+                                                        <h:form>
+                                                            <h:commandLink action="#{productoControlador.pro(sp.idCategoria)}" ><img src="#{sp.foto}" style="width: 400px" class="card-img-top" alt="..."></img></h:commandLink> 
+                                                        </h:form>
+                                                        <div class="card-body">
+                                                            <p class="card-text">#{sp.nombreCategoria}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </c:if>
+                </c:forEach>
+            </div>
+            <style>img{height: 200px}
+
+                .container {
+                    max-width: 1196px;
+                }</style>
+
+
+
+
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </h:body>
+</html>
+
