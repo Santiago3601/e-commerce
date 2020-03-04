@@ -26,7 +26,6 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="../../Categoria/addCat.xhtml">Categoria</a>
-                            <a class="dropdown-item" href="../../Categoria/addSub.xhtml">Sub Categoria</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../Categoria/addItem.xhtml">Item</a>
                         </div>
@@ -34,109 +33,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../../index.xhtml">Salir</a>
                     </li>
-     
-
-  <!--                  <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>-->
-
                 </ul>
-
             </div>
         </nav>
 
-
-        <div class="modal fade" id="Ingresar" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="Login-inLabel">Ingresar</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-
-                        <h:form class="needs-validation" >
-
-
-                            <f:view>
-
-                                <div class="form-group">
-                                    <label for="validationDefault01">Usuario o Correo</label>
-                                    <h:inputText class="form-control" ps:placeholder="E-mail" ps:required="true" ps:type="email" id="txtCorreo" value="#{usuarioControlador.usuario.correo}">
-                                    </h:inputText>
-
-                                </div>
-
-                                <label for="exampleInputPassword1">Password</label>
-
-                                <h:inputSecret  class="form-control" id="validationCustom04"  ps:placeholder="Password"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
-
-                                </h:inputSecret>
-
-                            </f:view>
-
-                        </h:form>
-
-                    </div>
-
-                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="Registrarse" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="Login-inLabel">Registro</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h:form class="needs-validation" >
-                            <f:view>
-                                <label for="validationDefault01">Nombre completo</label>
-                                <div class="form-group">
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <h:inputText ps:placeholder="Nombre" class="form-control" value="#{usuarioControlador.usuario.nombre}" title="Nombre" ps:required="true" requiredMessage="The Nombre field is required."/>
-
-                                        </div>
-                                        <div class="col">
-                                            <h:inputText ps:minlength="5" ps:placeholder="Apellido" class="form-control" id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" ps:required="true"  requiredMessage="The Apellido field is required."/> 
-
-                                        </div>  
-                                    </div>
-                                </div>
-                                <label for="exampleInputPassword1">Correo</label>
-                                <h:inputText  class="form-control" id="validationCustom01"  ps:placeholder="Correo"  ps:required="true" value="#{usuarioControlador.usuario.correo}">
-                                </h:inputText>
-
-                                <label for="exampleInputPassword1">Contraseña</label>
-                                <h:inputSecret  class="form-control" id="validationCustom02"  ps:placeholder="Contraseña"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
-                                </h:inputSecret>
-                                <label for="exampleInputPassword1">Usuario</label>
-                                <h:inputText  class="form-control" id="validationCustom03"  ps:placeholder="Ingresa un nombre de usuario que puedas recordar"  ps:required="true" value="#{usuarioControlador.usuario.correo}">
-                                </h:inputText>
-                            </f:view>
-                            <div class="modal-footer">
-                                <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
-                            </div>
-
-                        </h:form>
-
-                    </div>
-
-                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
-            </div>
-        </div>
 
         <!-- Page Content -->
         <div class="container">

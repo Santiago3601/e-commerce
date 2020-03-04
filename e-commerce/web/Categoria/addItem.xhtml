@@ -7,8 +7,8 @@
     <h:head>
         <title>Inicio</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-        <link rel="stylesheet" href="resources/css/freelancer.min.css"></link>
-        <link rel="stylesheet" href="resources/css/estilos.css"></link>
+        <link rel="stylesheet" href="../../resources/css/freelancer.min.css"></link>
+        <link rel="stylesheet" href="../../resources/css/estilos.css"></link>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
     </h:head>
     <h:body>
@@ -20,25 +20,24 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav justify-content-end">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#Registrarse">Agregar una categoria</a>
-                    </li>
-     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Agregar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../../">Categorias</a>
-                            <a class="dropdown-item" href="#">Sub categoria</a>
+                            <a class="dropdown-item" href="addCat.xhtml">Categoria</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Item</a>
+                            <a class="dropdown-item" href="addItem.xhtml">Item</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="../index.xhtml">Salir</a>
                     </li>
+
+
+                    <!--                  <li class="nav-item">
+                                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                      </li>-->
 
                 </ul>
 
@@ -46,102 +45,66 @@
         </nav>
 
 
-        <div class="modal fade" id="Ingresar" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="Login-inLabel">Ingresar</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
 
-
-                        <h:form class="needs-validation" >
-
-
-                            <f:view>
-
-                                <div class="form-group">
-                                    <label for="validationDefault01">Usuario o Correo</label>
-                                    <h:inputText class="form-control" ps:placeholder="E-mail" ps:required="true" ps:type="email" id="txtCorreo" value="#{usuarioControlador.usuario.correo}">
-                                    </h:inputText>
-
-                                </div>
-
-                                <label for="exampleInputPassword1">Password</label>
-
-                                <h:inputSecret  class="form-control" id="validationCustom04"  ps:placeholder="Password"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
-
-                                </h:inputSecret>
-
-                            </f:view>
-
-                        </h:form>
-
-                    </div>
-
-                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="Registrarse" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="Login-inLabel">Registro</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h:form class="needs-validation" >
-                            <f:view>
-                                <label for="validationDefault01">Nombre completo</label>
-                                <div class="form-group">
-                                    <div class="form-row">
-                                        <div class="col">
-                                            <h:inputText ps:placeholder="Nombre" class="form-control" value="#{usuarioControlador.usuario.nombre}" title="Nombre" ps:required="true" requiredMessage="The Nombre field is required."/>
-
-                                        </div>
-                                        <div class="col">
-                                            <h:inputText ps:minlength="5" ps:placeholder="Apellido" class="form-control" id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" ps:required="true"  requiredMessage="The Apellido field is required."/> 
-
-                                        </div>  
-                                    </div>
-                                </div>
-                                <label for="exampleInputPassword1">Correo</label>
-                                <h:inputText  class="form-control" id="validationCustom01"  ps:placeholder="Correo"  ps:required="true" value="#{usuarioControlador.usuario.correo}">
-                                </h:inputText>
-
-                                <label for="exampleInputPassword1">Contraseña</label>
-                                <h:inputSecret  class="form-control" id="validationCustom02"  ps:placeholder="Contraseña"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
-                                </h:inputSecret>
-                                <label for="exampleInputPassword1">Usuario</label>
-                                <h:inputText  class="form-control" id="validationCustom03"  ps:placeholder="Ingresa un nombre de usuario que puedas recordar"  ps:required="true" value="#{usuarioControlador.usuario.correo}">
-                                </h:inputText>
-                            </f:view>
-                            <div class="modal-footer">
-                                <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
-                            </div>
-
-                        </h:form>
-
-                    </div>
-
-                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
-                </div>
-            </div>
-        </div>
 
         <!-- Page Content -->
         <div class="container">
-            <h1>Bienvenido</h1>
-            <p>En la parte superior encontrará un panel con las opciones a las cuales podrá acceder</p>
+
+            <f:view>
+
+
+                <h:form enctype="multipart/form-data">
+
+                    <h:outputLabel value="IdProduct:" for="idProduct" />
+                    <h:inputText id="idProduct" value="#{productoControlador.producto.idProduct}" title="IdProduct" required="true" requiredMessage="The IdProduct field is required."/>
+                    <h:outputLabel value="Nombre:" for="nombre" />
+                    <h:inputText id="nombre" value="#{productoControlador.producto.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{productoControlador.producto.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="Peso:" for="peso" />
+                    <h:inputText id="peso" value="#{productoControlador.producto.peso}" title="Peso" required="true" requiredMessage="The Peso field is required."/>
+                    <h:outputLabel value="Precio:" for="precio" />
+                    <h:inputText id="precio" value="#{productoControlador.producto.precio}" title="Precio" required="true" requiredMessage="The Precio field is required."/>
+                    <h:outputLabel value="FotoUno:" for="fotoUno" />
+                    <h:inputFile id="foto" class="form-control" value="#{productoControlador.file}" title="Foto" />
+
+                    <h:outputLabel value="FotoDos:" for="fotoDos" />
+                    <h:inputTextarea rows="4" cols="30" id="fotoDos" value="#{productoControlador.producto.fotoDos}" title="FotoDos" required="true" requiredMessage="The FotoDos field is required."/>
+                    <h:outputLabel value="FotoTres:" for="fotoTres" />
+                    <h:inputTextarea rows="4" cols="30" id="fotoTres" value="#{productoControlador.producto.fotoTres}" title="FotoTres" required="true" requiredMessage="The FotoTres field is required."/>
+                    <h:outputLabel value="Categoria:" for="categoria" />
+                    <h:selectOneMenu id="categoria" value="#{productoControlador.producto.categoria}" title="Categoria" required="true" requiredMessage="The Categoria field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+
+
+
+
+                    <h1><h:outputText value="Crear nueva categoria"/></h1>
+                    <div class="form-group">
+
+                        <div class="form-row">
+
+                            <h:outputLabel value="NombreCategoria:" for="nombreCategoria" />
+                            <h:inputText class="form-control" id="nombreCategoria" value="#{categoriaControlador.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+                        </div>
+
+                        <div class="form-row">
+
+                            <h:outputLabel value="Foto:" for="foto" />
+                        </div>
+
+                        <div class="form-row">
+
+                            <h:outputLabel value="Descripcion:" for="descripcion" />
+                            <h:inputText class="form-control" id="descripcion" value="#{categoriaControlador.categoria.descripcion}" title="Descripcion" />
+                        </div>
+
+                    </div>
+                    <h:commandButton value="Registrar categoria" action="#{categoriaControlador.crearCategoria()}"/>
+                </h:form>
+            </f:view>
 
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -25,14 +25,13 @@
                             Agregar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../../Categoria/addCat.xhtml">Categoria</a>
-                            <a class="dropdown-item" href="../../Categoria/addSub.xhtml">Sub Categoria</a>
+                            <a class="dropdown-item" href="addCat.xhtml">Categoria</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../../Categoria/addItem.xhtml">Item</a>
+                            <a class="dropdown-item" href="addItem.xhtml">Item</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.xhtml">Salir</a>
+                        <a class="nav-link" href="../index.xhtml">Salir</a>
                     </li>
 
 
@@ -57,10 +56,7 @@
                 <h:form enctype="multipart/form-data">
                     <h1><h:outputText value="Crear nueva categoria"/></h1>
                     <div class="form-group">
-                        <div class="form-row">
-                            <h:outputLabel value="IdCategoria:" for="idCategoria" />
-                            <h:inputText class="form-control" id="idCategoria" value="#{categoriaControlador.categoria.idCategoria}" title="IdCategoria" required="true" requiredMessage="The IdCategoria field is required."/>
-                        </div>
+
                         <div class="form-row">
 
                             <h:outputLabel value="NombreCategoria:" for="nombreCategoria" />

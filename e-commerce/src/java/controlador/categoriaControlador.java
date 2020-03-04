@@ -17,7 +17,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.ConverterException;
 import javax.servlet.http.Part;
 
 /**
@@ -31,6 +33,7 @@ public class categoriaControlador implements Serializable {
     private Part file;
     private String nombre;
     private String pathReal;
+    private List<Object[]> list;
 
     @EJB
     private CategoriaFacade categoriaFacade;
@@ -104,7 +107,37 @@ public class categoriaControlador implements Serializable {
         return "ok";
 
     }
-    
+public String subCategoria() {
+//--1-- : PARA NETBEANS ES  'CARPETA DE ARCHIVOS'
+//--2-- : PARA NETBEANS ES  '\\build'
+//--3-- : PARA NETBEANS ES  '\\web\\........CARPETA_CONTENEDORA_DE_ARCHIVOS'
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources\\img\\");
+        path = path.substring(0, path.indexOf("\\build"));
+        path = path + "\\web\\resources\\img\\";
+        try {
+            this.nombre = file.getSubmittedFileName();
+            pathReal = "../../resources/img" + nombre;
+            path = path + this.nombre;
+            InputStream in = file.getInputStream();
+
+            byte[] data = new byte[in.available()];
+            in.read(data);
+            FileOutputStream out = new FileOutputStream(new File(path));
+            out.write(data);
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.categoria.setFoto(pathReal);
+        this.categoria.setCategoriaPadre(categoriaFacade.find(categoria.getCategoriaPadre()));
+        categoriaFacade.create(categoria);
+        categoria = new Categoria();
+
+        return "ok";
+
+    }
 
     /**
      * Creates a new instance of categoriaControlador
@@ -114,6 +147,19 @@ public class categoriaControlador implements Serializable {
 
     public List<Categoria> consultarTodos() {
         return categoriaFacade.findAll();
+    }
+
+    public List<Object[]> getList() {
+        return list;
+    }
+
+    public void setList(List<Object[]> list) {
+        this.list = list;
+    }
+
+    public List<Object[]> consultarTodosCatPadreNone() {
+        list = categoriaFacade.traerCatPadreNone();
+        return list;
     }
 
 }
