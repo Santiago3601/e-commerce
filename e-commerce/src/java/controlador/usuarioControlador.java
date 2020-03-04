@@ -70,6 +70,14 @@ public class usuarioControlador implements Serializable {
         return "usuario_registrado";
     }
 
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+    }
+
     public String validarLogin() {
         String redirecionar = "";
         try {

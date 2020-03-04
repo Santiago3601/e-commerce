@@ -7,8 +7,8 @@
     <h:head>
         <title>Inicio</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-        <link rel="stylesheet" href="resources/css/freelancer.min.css"></link>
-        <link rel="stylesheet" href="resources/css/estilos.css"></link>
+        <link rel="stylesheet" href="../../resources/css/freelancer.min.css"></link>
+        <link rel="stylesheet" href="../../resources/css/estilos.css"></link>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
     </h:head>
     <h:body>
@@ -20,29 +20,25 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav justify-content-end">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#Ingresar">Ingresar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#Registrarse">Registro</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categorias
+                            Agregar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="../../Categoria/addCat.xhtml">Categoria</a>
+                            <a class="dropdown-item" href="../../Categoria/addSub.xhtml">Sub Categoria</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="../../Categoria/addItem.xhtml">Item</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="../../index.xhtml">Salir</a>
                     </li>
+     
+
+  <!--                  <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>-->
 
                 </ul>
 
@@ -81,10 +77,6 @@
                                 </h:inputSecret>
 
                             </f:view>
-                            <div class="modal-footer">
-                                <a href="recuperar_contraseña.xhtml" target="_blanck" >Recuperar Contraseña</a>
-                                <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
-                            </div>
 
                         </h:form>
 
@@ -148,7 +140,7 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1>Bienvenido</h1>
+            <h1>Bienvenido #{usuarioControlador.usuarioLogueado.nombre}</h1>
             <p>En la parte superior encontrará un panel con las opciones a las cuales podrá acceder</p>
 
         </div>
