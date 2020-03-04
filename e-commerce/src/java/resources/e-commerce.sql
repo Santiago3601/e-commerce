@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2020 a las 21:35:21
+-- Tiempo de generación: 04-03-2020 a las 23:48:58
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -31,6 +31,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `selectbycat` (IN `cat` INT(5))  BEG
   WHERE categoria = cat;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selectCatByCatPadreNotNull` ()  NO SQL
+BEGIN
+  SELECT * FROM categoria
+  WHERE categoria.categoria_padre is not null;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selectCatByCatPadreNull` ()  NO SQL
+BEGIN
+  SELECT * FROM categoria
+  WHERE categoria.categoria_padre is null;
+END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -44,22 +56,24 @@ CREATE TABLE `categoria` (
   `nombre_categoria` varchar(50) COLLATE utf32_spanish_ci NOT NULL,
   `categoria_padre` int(5) DEFAULT NULL,
   `foto` text COLLATE utf32_spanish_ci DEFAULT NULL,
-  `descripcion` varchar(50) COLLATE utf32_spanish_ci DEFAULT NULL,
-  `url` text COLLATE utf32_spanish_ci DEFAULT NULL
+  `descripcion` varchar(50) COLLATE utf32_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `categoria_padre`, `foto`, `descripcion`, `url`) VALUES
-(1, 'Ropa', NULL, '../../resources/img/ropa0.jpg', NULL, NULL),
-(3, 'Hogar', NULL, '../../resources/img/hogar0.jpg', NULL, '../../categoria/'),
-(4, 'Electrodomesticos', NULL, '../../resources/img/electro0.jpg', NULL, NULL),
-(5, 'Hombre', 1, '../../resources/img/r_h_000.jpg', 'Nuestra ultima colección pensada especialmente par', '../../categoria/producto.xhtml'),
-(6, 'Mujer', 1, '../../resources/img/ropa_m_00.jpg', 'Los vestidos mas populares de este mes solo aquí', '../../categoria/producto.xhtml'),
-(7, 'Camas', 3, '../../resources/img/c_00.jpg', 'Las camas mas suaves que encontraras', '../../categoria/producto.xhtml'),
-(8, 'Sillas', 3, '../../resources/img/s_00.jpg', 'Sillas ', '../../categoria/producto.xhtml');
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `categoria_padre`, `foto`, `descripcion`) VALUES
+(1, 'Ropa', NULL, '../../resources/img/ropa0.jpg', NULL),
+(3, 'Hogar', NULL, '../../resources/img/hogar0.jpg', NULL),
+(4, 'Electrodomesticos', NULL, '../../resources/img/electro0.jpg', NULL),
+(5, 'Hombre', 1, '../../resources/img/r_h_000.jpg', 'Nuestra ultima colección pensada especialmente par'),
+(6, 'Mujer', 1, '../../resources/img/ropa_m_00.jpg', 'Los vestidos mas populares de este mes solo aquí'),
+(7, 'Camas', 3, '../../resources/img/c_00.jpg', 'Las camas mas suaves que encontraras'),
+(8, 'Sillas', 3, '../../resources/img/s_00.jpg', 'Sillas '),
+(9, 'prueba', NULL, '/e-commerce/resources/prueba1-.jpg', '12345'),
+(11, 'prueba5', NULL, '../../resources/imgprueba1-.jpg', 'prueba5'),
+(17, 'prueba6', NULL, NULL, 'Esto es una prueba');
 
 -- --------------------------------------------------------
 
@@ -94,7 +108,8 @@ INSERT INTO `producto` (`id_product`, `nombre`, `descripcion`, `peso`, `precio`,
 (8, 'Cama', 'Cama queen', 100200, 890, 7, '../resources/img/c_21.jpg', '../resources/img/c_22.jpg', '../resources/img/c_23.jpg'),
 (9, 'Cama', 'Cama king', 110000, 1000, 7, '../resources/img/c_31.jpg', '../resources/img/c_32.jpg', '../resources/img/c_33.jpg'),
 (10, 'Silla', 'Silla de Bamboo', 700, 40, 8, '../resources/img/s_011.jpg', '../resources/img/s_012.jpg', '../resources/img/s_013.jpg'),
-(11, 'Silla', 'Silla alcolchada', 800, 50, 8, '../resources/img/s_021.jpg', '../resources/img/s_022.jpg', '../resources/img/s_021.jpg');
+(11, 'Silla', 'Silla alcolchada', 800, 50, 8, '../resources/img/s_021.jpg', '../resources/img/s_022.jpg', '../resources/img/s_021.jpg'),
+(12, 'prueba', 'Esto es una prueba', 0, 0, 1, '../../resources/imgprueba1-2.jpg', '../../resources/imgImagen1.png', '../../resources/imgImagen1.png');
 
 -- --------------------------------------------------------
 
@@ -142,6 +157,22 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id_categoria` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id_product` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas

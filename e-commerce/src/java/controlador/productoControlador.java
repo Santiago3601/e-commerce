@@ -7,12 +7,16 @@ package controlador;
 
 import entidades.*;
 import facade.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
 /**
@@ -164,6 +168,63 @@ public class productoControlador implements Serializable {
      * Creates a new instance of productoControlador
      */
     public productoControlador() {
+    }
+
+    public String guardar() {
+        //--1-- : PARA NETBEANS ES  'CARPETA DE ARCHIVOS'
+//--2-- : PARA NETBEANS ES  '\\build'
+//--3-- : PARA NETBEANS ES  '\\web\\........CARPETA_CONTENEDORA_DE_ARCHIVOS'
+
+        String path1 = FacesContext.getCurrentInstance().getExternalContext().getRealPath("resources\\img\\");
+
+        path1 = path1.substring(0, path1.indexOf("\\build"));
+        path1 = path1 + "\\web\\resources\\img\\";
+        String path2 = path1, path3 = path1;
+        try {
+            this.nombre1 = file1.getSubmittedFileName();
+            this.nombre2 = file2.getSubmittedFileName();
+            this.nombre3 = file3.getSubmittedFileName();
+            pathReal1 = "../resources/img" + nombre1;
+            pathReal2 = "../resources/img" + nombre2;
+            pathReal3 = "../resources/img" + nombre3;
+            path1 = path1 + this.nombre1;
+            path2 = path2 + this.nombre2;
+            path3 = path3 + this.nombre3;
+            InputStream in1 = file1.getInputStream();
+            InputStream in2 = file2.getInputStream();
+            InputStream in3 = file3.getInputStream();
+
+            byte[] data1 = new byte[in1.available()];
+            byte[] data2 = new byte[in2.available()];
+            byte[] data3 = new byte[in3.available()];
+            in1.read(data1);
+            in2.read(data2);
+            in3.read(data3);
+            FileOutputStream out1 = new FileOutputStream(new File(path1));
+            FileOutputStream out2 = new FileOutputStream(new File(path2));
+            FileOutputStream out3 = new FileOutputStream(new File(path3));
+            out1.write(data1);
+            out2.write(data2);
+            out3.write(data3);
+            in1.close();
+            in2.close();
+            in3.close();
+            out1.close();
+            out2.close();
+            out3.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.producto.setFotoUno(pathReal1);
+        this.producto.setFotoDos(pathReal2);
+        this.producto.setFotoTres(pathReal3);
+        this.producto.setCategoria(categoriaFacade.find(categoria.getIdCategoria()));
+        
+        productoFacade.create(producto);
+        producto = new Producto();
+
+        return "ok";
+
     }
 
     public List<Producto> consultarTodos() {

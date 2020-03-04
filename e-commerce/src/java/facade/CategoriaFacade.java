@@ -30,17 +30,33 @@ public class CategoriaFacade extends AbstractFacade<Categoria> {
     public CategoriaFacade() {
         super(Categoria.class);
     }
-        public List<Object[]> traerCatPadreNone() {
+
+    public List<Object[]> traerCatPadreNone() {
         Query query;
         List<Object[]> listaConsulta = null;
-    
-            query = em.createNativeQuery("call selectCatByCatPadre()");
-            query.executeUpdate();
-            listaConsulta = query.getResultList();
-            if (!listaConsulta.isEmpty()) {
-                return listaConsulta;
-            }
- 
+
+        query = em.createNativeQuery("call selectCatByCatPadreNull()");
+        query.executeUpdate();
+        listaConsulta = query.getResultList();
+        if (!listaConsulta.isEmpty()) {
+            return listaConsulta;
+        }
+
         return null;
     }
+
+    public List<Object[]> traerCatPadre() {
+        Query query;
+        List<Object[]> listaConsulta = null;
+
+        query = em.createNativeQuery("call selectCatByCatPadreNotNull()");
+        query.executeUpdate();
+        listaConsulta = query.getResultList();
+        if (!listaConsulta.isEmpty()) {
+            return listaConsulta;
+        }
+
+        return null;
+    }
+
 }
