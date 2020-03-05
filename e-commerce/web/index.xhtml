@@ -21,8 +21,8 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav justify-content-end">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#Ingresar">Ingresar</a>
@@ -35,15 +35,22 @@
                             Categorias
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <c:forEach items="#{categoriaControlador.consultarTodosCatPadreNone()}" var="p">
+                                <a class="dropdown-item" href="#">#{p[1]}</a>
+                            </c:forEach>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sub categorias
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:forEach items="#{categoriaControlador.consultarTodosCatPadre()}" var="p">
+                                <a class="dropdown-item" href="#">#{p[1]}</a>
+                            </c:forEach>
+                        </div>
                     </li>
+
 
                 </ul>
 
@@ -75,16 +82,15 @@
 
                                 </div>
 
-                                <label for="exampleInputPassword1">Password</label>
+                                <label for="exampleInputPassword1">Contraseña</label>
 
-                                <h:inputSecret  class="form-control" id="validationCustom04"  ps:placeholder="Password"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
+                                <h:inputSecret  class="form-control" id="validationCustom04"  ps:placeholder="Contraseña"  ps:required="true" value="#{usuarioControlador.usuario.contrasenia}">
 
                                 </h:inputSecret>
 
                             </f:view>
                             <div class="modal-footer">
-                                <a href="recuperar_contraseña.xhtml" target="_blanck" >Recuperar Contraseña</a>
-                                <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
+                                <h:commandButton  class="btn btn-light"    action="#{usuarioControlador.validarLogin()}" value="Ingresar"></h:commandButton>
                             </div>
 
                         </h:form>
@@ -135,7 +141,7 @@
                             </h:inputSecret>
 
                             <div class="modal-footer">
-                                <h:commandButton  action="#{usuarioControlador.SingUp()}" value="Registrarse"></h:commandButton>
+                                <h:commandButton  class="btn btn-light"   action="#{usuarioControlador.SingUp()}" value="Registrarse"></h:commandButton>
                             </div>
 
                         </h:form>
@@ -150,32 +156,36 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1>Categorias</h1>
+            <h1>Ingresa o registrate para ver los items de cada categoria</h1>
+            <h2 style="margin-top:50px">Categorias</h2>
             <div class="nav">
-            <c:forEach items="#{categoriaControlador.consultarTodosCatPadreNone()}" var="p">
-                <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
-                    <img src="dashboard/usuario/#{p[3]}" class="card-img-top" alt="..."></img>
-                    <div class="card-body">
-                        <h5 class="card-title">#{p[1]}</h5>
+                <c:forEach items="#{categoriaControlador.consultarTodosCatPadreNone()}" var="p">
+                    <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
+                        <img src="dashboard/usuario/#{p[3]}" class="card-img-top" alt="..."></img>
+                        <div class="card-body">
+                            <h5 class="card-title">#{p[1]}</h5>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
-                </div>
-             <h1>Sub categorias</h1>
+                </c:forEach>
+            </div>
+            <h2 style="margin-top: 50px">Sub categorias</h2>
             <div class="nav">
-            <c:forEach items="#{categoriaControlador.consultarTodosCatPadre()}" var="p">
-                <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
-                    <img src="dashboard/usuario/#{p[3]}" class="card-img-top" alt="..."></img>
-                    <div class="card-body">
-                        <h5 class="card-title">#{p[1]}</h5>
+                <c:forEach items="#{categoriaControlador.consultarTodosCatPadre()}" var="p">
+                    <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
+                        <img src="dashboard/usuario/#{p[3]}" class="card-img-top" alt="..."></img>
+                        <div class="card-body">
+                            <h5 class="card-title">#{p[1]}</h5>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
-                </div>
+                </c:forEach>
+            </div>
             <p></p>
-            <style>.container {
-    max-width: 82pc;
-}</style>
+
+            <style>
+              
+                .container {
+                    max-width: 82pc;
+                }</style>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

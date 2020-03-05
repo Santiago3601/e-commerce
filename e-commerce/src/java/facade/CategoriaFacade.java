@@ -58,5 +58,12 @@ public class CategoriaFacade extends AbstractFacade<Categoria> {
 
         return null;
     }
+    public void insertCatPadre(int x) {
+        Query query;
+        query = em.createNativeQuery("call selectCatByCatPadreNotNull()");
+        query.executeUpdate();
+      
+       
+    }
 
 }

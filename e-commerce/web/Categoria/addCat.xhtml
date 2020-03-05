@@ -7,8 +7,8 @@
     <h:head>
         <title>Inicio</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-        <link rel="stylesheet" href="../../resources/css/freelancer.min.css"></link>
-        <link rel="stylesheet" href="../../resources/css/estilos.css"></link>
+        <link rel="stylesheet" href="../resources/css/freelancer.min.css"></link>
+        <link rel="stylesheet" href="../resources/css/estilos.css"></link>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
     </h:head>
     <h:body>
@@ -19,13 +19,20 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" >#{usuarioControlador.usuarioLogueado.nombre}</a>
+                    </li>
+                </ul>
                 <ul class="nav justify-content-end">
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Agregar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="addCat.xhtml">Categoria</a>
+                            <a class="dropdown-item disabled" href="addCat.xhtml">Categoria</a>
+                            <a class="dropdown-item" href="addCat.xhtml">Sub categoria</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="addItem.xhtml">Item</a>
                         </div>
@@ -45,7 +52,11 @@
         </nav>
 
 
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="../dashboard/admin/index.xhtml">Paginia de inicio</a></li>
+            </ol>
+        </nav>
 
         <!-- Page Content -->
         <div class="container">

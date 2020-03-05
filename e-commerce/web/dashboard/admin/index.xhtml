@@ -19,13 +19,20 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" >#{usuarioControlador.usuarioLogueado.nombre}</a>
+                    </li>
+                </ul>
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
+
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Agregar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="../../Categoria/addCat.xhtml">Categoria</a>
+                            <a class="dropdown-item" href="../../Categoria/addSub.xhtml">Sub categoria</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../Categoria/addItem.xhtml">Item</a>
                         </div>
@@ -37,10 +44,15 @@
             </div>
         </nav>
 
-
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Pagina de inicio</li>
+                </ol>
+            </nav>
         <!-- Page Content -->
         <div class="container">
-            <h1>Bienvenido #{usuarioControlador.usuarioLogueado.nombre}</h1>
+
+            <h1>Bienvenido #{usuarioControlador.usuarioLogueado.nombre}</h1><br></br>
             <p>En la parte superior encontrará un panel con las opciones a las cuales podrá acceder</p>
 
         </div>

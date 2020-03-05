@@ -29,6 +29,7 @@ import javax.servlet.http.Part;
 @Named(value = "categoriaControlador")
 @SessionScoped
 public class categoriaControlador implements Serializable {
+    private int CategoriaPadre;
 
     private Part file;
     private String nombre;
@@ -77,6 +78,15 @@ public class categoriaControlador implements Serializable {
         this.pathReal = pathReal;
     }
 
+    public int getCategoriaPadre() {
+        return CategoriaPadre;
+    }
+
+    public void setCategoriaPadre(int CategoriaPadre) {
+        this.CategoriaPadre = CategoriaPadre;
+    }
+
+    
     public String crearCategoria() {
 //--1-- : PARA NETBEANS ES  'CARPETA DE ARCHIVOS'
 //--2-- : PARA NETBEANS ES  '\\build'
@@ -131,7 +141,7 @@ public String subCategoria() {
             e.printStackTrace();
         }
         this.categoria.setFoto(pathReal);
-        this.categoria.setCategoriaPadre(categoriaFacade.find(categoria.getCategoriaPadre()));
+        this.categoria.setCategoriaPadre(categoriaFacade.find(this.CategoriaPadre));
         categoriaFacade.create(categoria);
         categoria = new Categoria();
 

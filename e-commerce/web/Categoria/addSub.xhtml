@@ -17,8 +17,17 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" >#{usuarioControlador.usuarioLogueado.nombre}</a>
+                </li>
+            </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" >#{usuarioControlador.usuarioLogueado.nombre}</a>
+                    </li>
+                </ul>
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,7 +35,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="addCat.xhtml">Categoria</a>
-                            <a class="dropdown-item" href="addSub.xhtml">Sub Categoria</a>
+                            <a class="dropdown-item disabled"  href="addSub.xhtml">Sub Categoria</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="addItem.xhtml">Item</a>
                         </div>
@@ -34,19 +43,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../index.xhtml">Salir</a>
                     </li>
-
-
-                    <!--                  <li class="nav-item">
-                                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                                      </li>-->
-
                 </ul>
 
             </div>
         </nav>
 
 
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="../dashboard/admin/index.xhtml">Paginia de inicio</a></li>
+            </ol>
+        </nav>
 
         <!-- Page Content -->
         <div class="container">
@@ -72,13 +79,13 @@
 
                         <div class="form-row">
                             <h:outputLabel value="CategoriaPadre:" for="categoriaPadre" />
-                            <h:selectOneMenu  class="form-control" id="categoriaPadre" value="#{categoriaControlador.categoria.categoriaPadre}" title="CategoriaPadre" >
+                            <h:selectOneMenu  class="form-control" id="categoriaPadre" value="#{categoriaControlador.categoriaPadre}" title="CategoriaPadre" >
                                 <!-- TODO: update below reference to list of available items-->
-                                 <f:selectItem itemLabel="Seleccione la categoria principal que dependera esta subcategoria" itemValue="" />
-                                 <f:selectItems value="#{categoriaControlador.consultarTodos()}" var ="c"  itemValue="#{2}" itemLabel="#{c.nombreCategoria} "/>
-                         
+                                <f:selectItem itemLabel="Seleccione la categoria principal que dependera esta subcategoria" itemValue="" />
+                                <f:selectItems value="#{categoriaControlador.consultarTodosCatPadreNone()}" var ="c"  itemValue="#{c[0]}" itemLabel="#{c[1]}"/>
+
                             </h:selectOneMenu>
-                            
+
                         </div>
                         <h:commandButton value="Registrar categoria" action="#{categoriaControlador.subCategoria()}"/>
                     </div>
@@ -86,6 +93,7 @@
             </f:view>
 
         </div>
+
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

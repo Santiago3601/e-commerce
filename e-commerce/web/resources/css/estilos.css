@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
 
 body {
-  font-family: 'Questrial';
- 
+    font-family: 'Questrial';
+
 }
 a{
     color: black;
@@ -12,5 +12,19 @@ div#navbarSupportedContent.collapse.navbar-collapse{
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
+}
+h1{
+
+}
+h2{
+    color: #545454;
+  font-family: 'Questrial';
+}
+h5{
+      font-family: 'Questrial';
+    color: #545454;
+}
+img.card-img-top{
+    height: 190px
 }
