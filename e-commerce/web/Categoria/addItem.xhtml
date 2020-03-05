@@ -31,7 +31,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.xhtml">Salir</a>
+                        <a class="nav-link" href="../index.xhtml?faces-redirect=true">Salir</a>
                     </li>
 
 
@@ -54,6 +54,8 @@
 
 
                 <h:form enctype="multipart/form-data">
+                    <h1><h:outputText value="Crear nuevo item"/></h1>
+
                     <div class="form-group">
 
                         <div class="form-row">
@@ -101,7 +103,7 @@
                             <h:outputLabel value="Categoria:" for="categoria" />
                             <h:selectOneMenu id="categoria" value="#{productoControlador.categoria.idCategoria}" title="Categoria" required="true" requiredMessage="The Categoria field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{categoriaControlador.consultarTodosCatPadreNone()}" var="c" itemValue="#{c[0]}" itemLabel="#{c[1]}"/>
+                                <f:selectItems value="#{categoriaControlador.consultarTodosCatPadre()}" var="c" itemValue="#{c[0]}" itemLabel="#{c[1]}"/>
                             </h:selectOneMenu>
                         </div>
 

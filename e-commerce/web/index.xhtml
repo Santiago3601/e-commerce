@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Inicio</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -149,9 +150,32 @@
 
         <!-- Page Content -->
         <div class="container">
-            <h1>Bienvenido</h1>
-            <p>En la parte superior encontrará un panel con las opciones a las cuales podrá acceder</p>
-
+            <h1>Categorias</h1>
+            <div class="nav">
+            <c:forEach items="#{categoriaControlador.consultarTodosCatPadreNone()}" var="p">
+                <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
+                    <img src="dashboard/usuario/#{p[3]}" class="card-img-top" alt="..."></img>
+                    <div class="card-body">
+                        <h5 class="card-title">#{p[1]}</h5>
+                    </div>
+                </div>
+            </c:forEach>
+                </div>
+             <h1>Sub categorias</h1>
+            <div class="nav">
+            <c:forEach items="#{categoriaControlador.consultarTodosCatPadre()}" var="p">
+                <div class="card" style="width: 18rem; margin: 10px;     box-shadow: 0 0 36px rgba(0,0,0,0.4);">
+                    <img src="dashboard/usuario/#{p[3]}" class="card-img-top" alt="..."></img>
+                    <div class="card-body">
+                        <h5 class="card-title">#{p[1]}</h5>
+                    </div>
+                </div>
+            </c:forEach>
+                </div>
+            <p></p>
+            <style>.container {
+    max-width: 82pc;
+}</style>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

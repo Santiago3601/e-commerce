@@ -184,9 +184,9 @@ public class productoControlador implements Serializable {
             this.nombre1 = file1.getSubmittedFileName();
             this.nombre2 = file2.getSubmittedFileName();
             this.nombre3 = file3.getSubmittedFileName();
-            pathReal1 = "../resources/img" + nombre1;
-            pathReal2 = "../resources/img" + nombre2;
-            pathReal3 = "../resources/img" + nombre3;
+            pathReal1 = "../resources/img/" + nombre1;
+            pathReal2 = "../resources/img/" + nombre2;
+            pathReal3 = "../resources/img/" + nombre3;
             path1 = path1 + this.nombre1;
             path2 = path2 + this.nombre2;
             path3 = path3 + this.nombre3;
@@ -235,4 +235,5 @@ public class productoControlador implements Serializable {
         list = productoFacade.traerProducto(this.productoID);
         return list;
     }
+    
 }

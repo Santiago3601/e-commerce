@@ -161,5 +161,9 @@ public String subCategoria() {
         list = categoriaFacade.traerCatPadreNone();
         return list;
     }
+    public List<Object[]> consultarTodosCatPadre() {
+        list = categoriaFacade.traerCatPadre();
+        return list;
+    }
 
 }
