@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 05-03-2020 a las 17:16:53
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Host: 127.0.0.1
+-- Generation Time: Mar 06, 2020 at 04:10 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,12 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `e-commerce`
+-- Database: `e-commerce`
 --
 
 DELIMITER $$
 --
--- Procedimientos
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `selectbycat` (IN `cat` INT(5))  BEGIN
   SELECT * FROM producto
@@ -48,7 +48,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Table structure for table `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -60,7 +60,7 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `categoria`
+-- Dumping data for table `categoria`
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `categoria_padre`, `foto`, `descripcion`) VALUES
@@ -72,12 +72,15 @@ INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `categoria_padre`, 
 (7, 'Camas', 3, '../../resources/img/c_00.jpg', 'Las camas mas suaves que encontraras'),
 (8, 'Sillas', 3, '../../resources/img/s_00.jpg', 'Sillas '),
 (18, 'Lavadoras', 4, '../../resources/img/l_00.jpg', 'Las mas modernas lavadoras que encontraras'),
-(19, 'Microondas', 4, '../../resources/img/m_00.jpg', 'Microondas');
+(19, 'Microondas', 4, '../../resources/img/m_00.jpg', 'Microondas'),
+(30, 'Deportes', NULL, '../../resources/img/d_00.png', 'Deportes'),
+(31, 'Running', 30, '../../resources/img/r00.jpg', 'Running'),
+(32, 'Bicicletas', 30, '../../resources/img/b00.jpg', 'Bicicletas');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Table structure for table `producto`
 --
 
 CREATE TABLE `producto` (
@@ -93,7 +96,7 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `producto`
+-- Dumping data for table `producto`
 --
 
 INSERT INTO `producto` (`id_product`, `nombre`, `descripcion`, `peso`, `precio`, `categoria`, `foto_uno`, `foto_dos`, `foto_tres`) VALUES
@@ -112,12 +115,18 @@ INSERT INTO `producto` (`id_product`, `nombre`, `descripcion`, `peso`, `precio`,
 (17, 'Lavadora ', 'Lavadora blanca samsung', 68000, 1000, 18, '../resources/img/l_21.jpg', '../resources/img/l_22.jpg', '../resources/img/l_23.jpg'),
 (18, 'Lavadora', 'Lavadora negra LG', 70000, 1800, 18, '../resources/img/l_31.jpg', '../resources/img/l_32.jpg', '../resources/img/l_33.jpg'),
 (25, 'Microondas', 'Microondas plateado samsung', 2000, 300, 19, '../resources/img/m_11.jpg', '../resources/img/m_12.jpg', '../resources/img/m_13.jpg'),
-(26, 'Microondas', 'Microondas gris Wirpool', 2500, 220, 19, '../resources/img/m_21.jpg', '../resources/img/m_22.jpg', '../resources/img/m_23.jpg');
+(26, 'Microondas', 'Microondas gris Wirpool', 2500, 220, 19, '../resources/img/m_21.jpg', '../resources/img/m_22.jpg', '../resources/img/m_23.jpg'),
+(27, 'Tennis ', 'Tennis negros running', 500, 300, 31, '../resources/img/t_11.jpg', '../resources/img/t_12.jpg', '../resources/img/t_13.jpg'),
+(28, 'Tennis ', 'Tennis Skechers blancos', 400, 400, 31, '../resources/img/t_21.jpg', '../resources/img/t_22.jpg', '../resources/img/t_23.jpg'),
+(29, 'Pantalon', 'Pantalon termico', 200, 50, 31, '../resources/img/p_11.jpg', '../resources/img/p_22.jpg', '../resources/img/p_23.jpg'),
+(30, 'Bicicleta', 'Bicicleta de montaña Kawasaki negra', 5000, 1200, 32, '../resources/img/b_11.jpg', '../resources/img/b_12.jpg', '../resources/img/b_13.jpg'),
+(31, 'Bicicleta', 'Bicicleta de montaña jeep', 3000, 750, 32, '../resources/img/b_21.jpg', '../resources/img/b_22.jpg', '../resources/img/b_23.jpg'),
+(32, 'Bicicleta', 'Bicicleta de ruta Jeep', 500, 4500, 32, '../resources/img/b_31.jpg', '../resources/img/b_32.jpg', '../resources/img/b_33.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -130,66 +139,67 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `correo`, `contrasenia`, `rol`) VALUES
 (100060020, 'Santiago', 'Ruiz RincÃ³n', 'santyago3601@gmail.com', '12345', 1),
 (100200300, 'Juan Pablo ', 'Garcia', 'juan@gmail.com', '12345', 2),
-(1000264665, 'Shirley', 'Bernal', 'shriley.01@gmail.com', '12345', 2);
+(1000264665, 'Shirley', 'Bernal', 'shriley.01@gmail.com', '12345', 2),
+(1000600046, 'Juan Pablo', 'Garcia Jimenez', 'j.p@gmail.com', '12345', 2);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categoria`
+-- Indexes for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`),
   ADD KEY `categoria_padre` (`categoria_padre`);
 
 --
--- Indices de la tabla `producto`
+-- Indexes for table `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_product`),
   ADD KEY `categoria` (`categoria`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_categoria` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_product` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_product` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `categoria`
+-- Constraints for table `categoria`
 --
 ALTER TABLE `categoria`
   ADD CONSTRAINT `fk_cat_cat` FOREIGN KEY (`categoria_padre`) REFERENCES `categoria` (`id_categoria`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `producto`
+-- Constraints for table `producto`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `fk_cat_pro` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`id_categoria`) ON UPDATE CASCADE;

@@ -97,7 +97,7 @@ public class categoriaControlador implements Serializable {
         path = path + "\\web\\resources\\img\\";
         try {
             this.nombre = file.getSubmittedFileName();
-            pathReal = "../../resources/img" + nombre;
+            pathReal = "../../resources/img/" + nombre;
             path = path + this.nombre;
             InputStream in = file.getInputStream();
 
@@ -127,7 +127,7 @@ public String subCategoria() {
         path = path + "\\web\\resources\\img\\";
         try {
             this.nombre = file.getSubmittedFileName();
-            pathReal = "../../resources/img" + nombre;
+            pathReal = "../../resources/img/" + nombre;
             path = path + this.nombre;
             InputStream in = file.getInputStream();
 
